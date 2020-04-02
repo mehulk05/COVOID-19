@@ -52,28 +52,28 @@
                 <tr>
                     <th (click)="sortAscending(sortedDataBasedOnDate)" class="sticky state-heading">
                         <div class="heading-content"><abbr title="State">State/UT</abbr>
-
+                            <div [ngClass]="showarrow  ? 'down-arrow' : 'up-arrow'"></div>
                         </div>
                     </th>
                     <th (click)="sortByMaxCases(sortedDataBasedOnDate)" class="sticky">
                         <div class="heading-content"><abbr class="" title="Confirmed">Confirmed</abbr>
-
+                            <div [ngClass]="showarrow  ? 'down-arrow' : 'up-arrow'"></div>
                         </div>
                     </th>
                     <th (click)="sortByMaxActive(sortedDataBasedOnDate)" class="sticky">
                         <div class="heading-content"><abbr class="" title="Active">Active</abbr>
-
+                            <div [ngClass]="showarrow  ? 'down-arrow' : 'up-arrow'"></div>
                         </div>
                     </th>
                     <th (click)="sortByMaxRecovered(sortedDataBasedOnDate)" class="sticky">
                         <div class="heading-content"><abbr class="" title="Recovered">Recovered</abbr>
-                            <div [ngClass]="status ? 'down-arrow' : 'up arrow'"></div>
-
+                            <div></div>
+                            <div [ngClass]="showarrow  ? 'down-arrow' : 'up-arrow'"></div>
                         </div>
                     </th>
                     <th (click)="sortByMaxDeath(sortedDataBasedOnDate)" class="sticky">
                         <div class="heading-content"><abbr class="" title="Deaths">Deceased</abbr>
-
+                            <div [ngClass]="showarrow  ? 'down-arrow' : 'up-arrow'"></div>
                         </div>
                     </th>
                 </tr>
@@ -84,7 +84,8 @@
                 <span class="dropdown rotateDownRight"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
 
                 <tr class="state">
-                    <td (click)="OngetState(data.state)" style="font-weight: 600;">{{data.state}}</td>
+                    <td (click)="OngetState(data.state); showHideData(data)" style="font-weight: 600;">{{data.state}}</td>
+
 
 
 
@@ -101,7 +102,7 @@
                     <td style="color: inherit;">{{data.deaths}}</td>
 
                 </tr>
-                <app-district *ngIf="!showDistrict"></app-district>
+                <app-district *ngIf="data['show']"></app-district>
             </tbody>
         </table>
     </div>

@@ -408,13 +408,17 @@
     vertical-align: inherit;
 } */
     
-    .arrow-down,
-    .arrow-up {
+    .down-arrow {
+        border-top: 5px solid rgba(108, 117, 125, .6);
+    }
+    
+    .up-arrow,
+    .down-arrow {
         border-left: 5px solid transparent;
         border-right: 5px solid transparent;
         margin-left: .25rem;
     }
     
-    .arrow-up {
+    .up-arrow {
         border-bottom: 5px solid rgba(108, 117, 125, .6);
     }

@@ -8,8 +8,9 @@ import { stringify } from 'querystring';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  status = true;
-  showDistrict=true
+  showarrow=true
+ 
+  showDistrict:boolean=false
   sortedDataBasedOnDate
   private isAscendingSort: boolean = false;
 
@@ -106,13 +107,23 @@ export class HomeComponent implements OnInit {
   }
 
   OngetState(state) {
+
     this.cs.getState(state)
     this.cs.getDataDistrictWise(state)
-    this.showDistrict=!this.showDistrict
+ 
+  }
+
+  showHideData(data) {
+    if(data && data['show'] == true) {
+      data['show'] = false;
+    } else {
+      data['show'] = true;
+    }
   }
 
   sortAscending(data) {
     this.isAscendingSort = !this.isAscendingSort;
+    this.showarrow=true
     data.forEach(item => item.statewise.sort(function (a, b) {
       if (b.state < a.state) {
         return -1;
@@ -125,6 +136,7 @@ export class HomeComponent implements OnInit {
     this.calculateDiff(this.sortedDataBasedOnDate)
 
     if (!this.isAscendingSort) {
+this.showarrow=!this.showarrow
       let a = data.forEach(item => item.statewise.sort(function (a, b) {
         if (a.state < b.state) {
           return -1;
