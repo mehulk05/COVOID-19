@@ -1,0 +1,161 @@
+<div class="Home">
+    <div class="home-left">
+        <div class="header fadeInUp" style="animation-delay: 0.5s;">
+            <div class="header-mid">
+                <div class="titles">
+                    <h1>India COVID-19 Tracker</h1>
+                    <h6>A Crowdsourced Initiative</h6>
+                </div>
+                <div class="last-update">
+                    <h6>Last Updated</h6>
+                    <h3 *ngIf='lastupdated.hour==0; else elseBlock'> {{lastupdated.minute}} minutes ago</h3>
+                    <ng-template #elseBlock>{{lastupdated.hour}} hour {{lastupdated.minute}} minutes ago</ng-template>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="Level fadeInUp" style="animation-delay: 0.8s;">
+            <div class="level-item is-cherry">
+                <h5>Confirmed</h5>
+                <h4>[+{{DailyStatus.total.confirmed}}]</h4>
+                <h1>{{statewisecase.confirmed}} </h1>
+            </div>
+            <div class="level-item is-blue">
+                <h5 class="heading">Active</h5>
+                <h4>[+{{DailyStatus.total.active}}]</h4>
+                <h1 class="title has-text-info">{{statewisecase.active}}</h1>
+            </div>
+            <div class="level-item is-green">
+                <h5 class="heading">Recovered</h5>
+                <h4>[+{{DailyStatus.total.recovered}}]</h4>
+                <h1 class="title has-text-success">{{statewisecase.recovered}} </h1>
+            </div>
+            <div class="level-item is-gray">
+                <h5 class="heading">Deceased</h5>
+                <h4>[+{{DailyStatus.total.deaths}}]</h4>
+                <h1 class="title has-text-grey">{{statewisecase.deaths}}</h1>
+            </div>
+        </div>
+
+
+        <div class="Minigraph">
+            <div class="svg-parent fadeInUp" style="animation-delay: 0.6s;"><svg width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"><path fill="none" stroke="#ff073a99" stroke-width="3" cursor="pointer" d="M0,38.65384615384615C0,38.65384615384615,3.3333333333333335,37.756410256410255,5,37.69230769230769C6.666666666666666,37.62820512820513,8.333333333333334,38.3974358974359,10,38.269230769230774C11.666666666666666,38.14102564102565,13.333333333333334,36.82692307692308,15,36.92307692307693C16.666666666666668,37.019230769230774,18.333333333333332,38.782051282051285,20,38.84615384615385C21.666666666666668,38.91025641025641,23.333333333333332,37.72435897435897,25,37.30769230769231C26.666666666666668,36.89102564102564,28.333333333333332,36.69871794871795,30,36.34615384615385C31.666666666666668,35.993589743589745,33.333333333333336,35.48076923076923,35,35.19230769230769C36.666666666666664,34.90384615384615,38.333333333333336,35.705128205128204,40,34.61538461538461C41.666666666666664,33.52564102564102,43.333333333333336,30.192307692307693,45,28.653846153846153C46.666666666666664,27.115384615384613,48.333333333333336,25.705128205128204,50,25.384615384615383C51.666666666666664,25.064102564102562,53.333333333333336,27.564102564102566,55,26.730769230769234C56.666666666666664,25.8974358974359,58.333333333333336,20.288461538461537,60,20.384615384615383C61.666666666666664,20.48076923076923,63.333333333333336,26.794871794871792,65,27.307692307692307C66.66666666666667,27.82051282051282,68.33333333333333,23.846153846153847,70,23.461538461538463C71.66666666666667,23.07692307692308,73.33333333333333,27.083333333333332,75,25C76.66666666666667,22.916666666666668,78.33333333333333,13.044871794871796,80,10.961538461538463C81.66666666666667,8.878205128205131,83.33333333333333,11.185897435897436,85,12.5C86.66666666666667,13.814102564102564,88.33333333333333,20.92948717948718,90,18.846153846153847C91.66666666666667,16.762820512820515,95,0,95,0" stroke-dasharray="139.56314086914062 139.56314086914062" stroke-dashoffset="0"></path><circle fill="#ff073a" stroke="#ff073a" r="2" cursor="pointer" cx="95" cy="0" style="opacity: 1;"></circle></svg></div>
+            <div class="svg-parent is-blue fadeInUp" style="animation-delay: 0.7s;"><svg width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"><path fill="none" cursor="pointer" stroke="#007bff99" stroke-width="3" d="M0,38.65384615384615C0,38.65384615384615,3.3333333333333335,37.756410256410255,5,37.88461538461539C6.666666666666666,38.01282051282052,8.333333333333334,39.55128205128206,10,39.42307692307693C11.666666666666666,39.294871794871796,13.333333333333334,37.11538461538461,15,37.11538461538461C16.666666666666668,37.11538461538461,18.333333333333332,39.358974358974365,20,39.42307692307693C21.666666666666668,39.48717948717949,23.333333333333332,37.94871794871795,25,37.5C26.666666666666668,37.05128205128205,28.333333333333332,37.11538461538461,30,36.730769230769226C31.666666666666668,36.34615384615384,33.333333333333336,35.3525641025641,35,35.19230769230769C36.666666666666664,35.032051282051285,38.333333333333336,36.76282051282052,40,35.769230769230774C41.666666666666664,34.77564102564103,43.333333333333336,30.961538461538467,45,29.230769230769234C46.666666666666664,27.5,48.333333333333336,25.705128205128204,50,25.384615384615383C51.666666666666664,25.064102564102562,53.333333333333336,28.01282051282051,55,27.307692307692307C56.666666666666664,26.602564102564102,58.333333333333336,20.641025641025642,60,21.153846153846153C61.666666666666664,21.666666666666664,63.333333333333336,29.87179487179487,65,30.384615384615383C66.66666666666667,30.897435897435898,68.33333333333333,24.743589743589745,70,24.230769230769234C71.66666666666667,23.717948717948723,73.33333333333333,28.621794871794872,75,27.307692307692307C76.66666666666667,25.99358974358974,78.33333333333333,18.333333333333336,80,16.346153846153847C81.66666666666667,14.35897435897436,83.33333333333333,14.326923076923075,85,15.384615384615383C86.66666666666667,16.44230769230769,88.33333333333333,23.621794871794872,90,22.692307692307693C91.66666666666667,21.762820512820515,95,9.807692307692308,95,9.807692307692308" stroke-dasharray="137.1319122314453 137.1319122314453" stroke-dashoffset="0"></path><circle fill="#007bff" stroke="#007bff" r="2" cursor="pointer" cx="95" cy="9.807692307692308" style="opacity: 1;"></circle></svg></div>
+            <div class="svg-parent is-green fadeInUp" style="animation-delay: 0.8s;"><svg width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"><path fill="none" stroke="#28a74599" stroke-width="3" cursor="pointer" d="M0,40C0,40,3.3333333333333335,40.19230769230769,5,40C6.666666666666666,39.80769230769231,8.333333333333334,38.84615384615385,10,38.84615384615385C11.666666666666666,38.84615384615385,13.333333333333334,39.90384615384615,15,40C16.666666666666668,40.09615384615385,18.333333333333332,39.45512820512821,20,39.42307692307693C21.666666666666668,39.39102564102564,23.333333333333332,39.743589743589745,25,39.80769230769231C26.666666666666668,39.87179487179487,28.333333333333332,39.77564102564102,30,39.80769230769231C31.666666666666668,39.83974358974359,33.333333333333336,40.128205128205124,35,40C36.666666666666664,39.871794871794876,38.333333333333336,39.13461538461539,40,39.03846153846154C41.666666666666664,38.94230769230769,43.333333333333336,39.26282051282052,45,39.42307692307693C46.666666666666664,39.583333333333336,48.333333333333336,39.90384615384615,50,40C51.666666666666664,40.09615384615385,53.333333333333336,40.06410256410256,55,40C56.666666666666664,39.93589743589744,58.333333333333336,40.09615384615385,60,39.61538461538461C61.666666666666664,39.13461538461538,63.333333333333336,37.1474358974359,65,37.11538461538461C66.66666666666667,37.08333333333333,68.33333333333333,39.16666666666667,70,39.42307692307693C71.66666666666667,39.67948717948718,73.33333333333333,39.35897435897436,75,38.65384615384615C76.66666666666667,37.94871794871795,78.33333333333333,35.28846153846154,80,35.19230769230769C81.66666666666667,35.09615384615385,83.33333333333333,37.82051282051282,85,38.07692307692307C86.66666666666667,38.33333333333333,88.33333333333333,37.53205128205128,90,36.730769230769226C91.66666666666667,35.929487179487175,95,33.26923076923077,95,33.26923076923077" stroke-dasharray="139.56314086914062 139.56314086914062" stroke-dashoffset="0"></path><circle fill="#28a745" stroke="#28a745" r="2" cursor="pointer" cx="95" cy="33.26923076923077" style="opacity: 1;"></circle></svg></div>
+            <div class="svg-parent is-gray fadeInUp" style="animation-delay: 0.9s;"><svg width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"><path fill="none" cursor="pointer" stroke="#6c757d99" stroke-width="3" d="M0,40C0,40,3.3333333333333335,39.80769230769231,5,39.80769230769231C6.666666666666666,39.80769230769231,8.333333333333334,40,10,40C11.666666666666666,40,13.333333333333334,39.80769230769231,15,39.80769230769231C16.666666666666668,39.80769230769231,18.333333333333332,39.967948717948715,20,40C21.666666666666668,40.032051282051285,23.333333333333332,40.032051282051285,25,40C26.666666666666668,39.967948717948715,28.333333333333332,39.80769230769231,30,39.80769230769231C31.666666666666668,39.80769230769231,33.333333333333336,40,35,40C36.666666666666664,40,38.333333333333336,39.80769230769231,40,39.80769230769231C41.666666666666664,39.80769230769231,43.333333333333336,39.967948717948715,45,40C46.666666666666664,40.032051282051285,48.333333333333336,40.09615384615385,50,40C51.666666666666664,39.90384615384615,53.333333333333336,39.48717948717949,55,39.42307692307693C56.666666666666664,39.358974358974365,58.333333333333336,39.55128205128205,60,39.61538461538461C61.666666666666664,39.679487179487175,63.333333333333336,39.77564102564102,65,39.80769230769231C66.66666666666667,39.83974358974359,68.33333333333333,39.93589743589743,70,39.80769230769231C71.66666666666667,39.67948717948718,73.33333333333333,39.1025641025641,75,39.03846153846154C76.66666666666667,38.97435897435898,78.33333333333333,39.42307692307693,80,39.42307692307693C81.66666666666667,39.42307692307693,83.33333333333333,39.03846153846154,85,39.03846153846154C86.66666666666667,39.03846153846154,88.33333333333333,39.77564102564103,90,39.42307692307693C91.66666666666667,39.070512820512825,95,36.92307692307693,95,36.92307692307693" stroke-dasharray="95.83547973632812 95.83547973632812" stroke-dashoffset="0"></path><circle fill="#6c757d" stroke="#6c757d" r="2" cursor="pointer" cx="95" cy="36.92307692307693" style="opacity: 1;"></circle></svg></div>
+        </div>
+
+        <h5 class="affected-count fadeInUp" style="animation-delay: 1s;">28 States/UTS Affected</h5>
+        <table class="table fadeInUp" style="animation-delay: 1s;">
+            <thead>
+                <tr>
+                    <th (click)="sortAscending(sortedDataBasedOnDate)" class="sticky state-heading">
+                        <div class="heading-content"><abbr title="State">State/UT</abbr>
+
+                        </div>
+                    </th>
+                    <th (click)="sortByMaxCases(sortedDataBasedOnDate)" class="sticky">
+                        <div class="heading-content"><abbr class="" title="Confirmed">Confirmed</abbr>
+
+                        </div>
+                    </th>
+                    <th (click)="sortByMaxActive(sortedDataBasedOnDate)" class="sticky">
+                        <div class="heading-content"><abbr class="" title="Active">Active</abbr>
+
+                        </div>
+                    </th>
+                    <th (click)="sortByMaxRecovered(sortedDataBasedOnDate)" class="sticky">
+                        <div class="heading-content"><abbr class="" title="Recovered">Recovered</abbr>
+                            <div [ngClass]="status ? 'down-arrow' : 'up arrow'"></div>
+
+                        </div>
+                    </th>
+                    <th (click)="sortByMaxDeath(sortedDataBasedOnDate)" class="sticky">
+                        <div class="heading-content"><abbr class="" title="Deaths">Deceased</abbr>
+
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+
+
+            <tbody *ngFor="let data of statewisedata;let i=index">
+                <span class="dropdown rotateDownRight"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+
+                <tr class="state">
+                    <td (click)="OngetState(data.state)" style="font-weight: 600;">{{data.state}}</td>
+
+
+
+                    <td style="color: inherit;">{{data.confirmed}}
+
+                        <span *ngIf='DailystateStatus[i]?.confirmed !==0 || DailystateStatus[i]?.confirmed < 0 ;' class="deltas" style="color: rgb(255, 7, 58);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline>
+                                </svg>    {{DailystateStatus[i]?.confirmed}}</span>
+
+                    </td>
+
+
+                    <td style="color: inherit;">{{data.active}}</td>
+                    <td style="color: inherit;">{{data.recovered}}</td>
+                    <td style="color: inherit;">{{data.deaths}}</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+
+
+
+    <div class="home-right">
+        <div class="MapExplorer fadeInUp" style="animation-delay: 1.2s;">
+            <div class="header">
+                <h1>India Map</h1>
+                <h6>Hover over a state for more details</h6>
+            </div>
+            <div class="map-stats">
+                <div class="stats">
+                    <h5>Confirmed</h5>
+                    <div class="stats-bottom">
+                        <h1>248</h1>
+                        <h6></h6>
+                    </div>
+                </div>
+                <div class="stats is-blue">
+                    <h5>Active</h5>
+                    <div class="stats-bottom">
+                        <h1>199</h1>
+                        <h6></h6>
+                    </div>
+                </div>
+                <div class="stats is-green">
+                    <h5>Recovered</h5>
+                    <div class="stats-bottom">
+                        <h1>39</h1>
+                        <h6></h6>
+                    </div>
+                </div>
+                <div class="stats is-gray">
+                    <h5>Deceased</h5>
+                    <div class="stats-bottom">
+                        <h1>10</h1>
+                        <h6></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="meta">
+                <h2>Maharashtra</h2>
+                <div class="last-update state-last-update">
+                    <h6>Last Updated</h6>
+                    <h3>about 7 hours Ago</h3>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>

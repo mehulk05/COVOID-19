@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: "archia";
+    src: url(assets/fonts/archia-bold-webfont.ad8463d1.woff2) format("woff2");
+    src: url(assets/fonts/archia-medium-webfont.80da55a5.woff2) format("woff2");
+    src: url(assets/fonts/archia-semibold-webfont.890ee929.woff2) format("woff2");
+}
