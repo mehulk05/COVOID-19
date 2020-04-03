@@ -1,11 +1,4 @@
-<tr class="state-last-update">
-    <td colspan="2">
-        <div class="last-update">
-            <h6>Last Updated&nbsp; about 1 hours Ago</h6>
-        </div>
-    </td>
-</tr>
-
+<!-- 
 <tr class="district-heading">
     <th>
         <div class="heading-content">
@@ -17,15 +10,44 @@
             <abbr title="Confirmed">Confirmed</abbr>
         </div>
     </th>
-</tr>
+</tr> -->
+<div class="state-last-update">
+    <td colspan="2">
+        <div class="last-update">
+            <h6>Last Updated&nbsp; about 1 hours Ago</h6>
+        </div>
+    </td>
+</div>
+
+<div class="district-heading">
+    <th (click)="sortDistrict(districtdata)">
+        <div class="heading-content">
+            <abbr class="dist" title="District">District</abbr>
+        </div>
+    </th>
+    <th>
+        <div class="heading-content">
+            <abbr class="confirmed" title="Confirmed">Confirmed</abbr>
+        </div>
+    </th>
+</div>
+
+<div *ngFor="let data of districtdata|keyvalue" class="district">
+
+    <td class="col-md-6 district-name" style="font-weight: 600;"> {{data.key}}</td>
+    <td class="col-md-6 district-cases">
+        <span *ngIf='data.value.delta.confirmed !==0 || data.value.delta.confirmed > 0 ;' class="deltas" style="color: rgb(255, 7, 58);">
+            
+            <svg _ngcontent-boj-c19="" xmlns="http://www.w3.org/2000/svg " width="24 " height="24 " viewBox="0 0 24 24
+                        " fill="none " stroke="currentColor " stroke-width="2 " stroke-linecap="round " stroke-linejoin="round "><line _ngcontent-boj-c19="" x1="12 " y1="19 " x2="12 " y2="5 "></line><polyline _ngcontent-boj-c19="" points="5 12 12 5 19 12 "></polyline></svg>
+            {{data.value.delta.confirmed}}</span>{{data.value.confirmed}}
 
 
-<tr *ngFor="let data of districtdata|keyvalue" class="district" style="background: rgb(248, 249, 250);">
 
-    <td style="font-weight: 600;"> {{data.key}}</td>
-    <td><span class="deltas" style="color: rgb(255, 7, 58);"></span>{{data.value.confirmed}}</td>
 
-</tr>
+    </td>
+
+</div>
 
 
 

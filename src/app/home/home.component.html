@@ -65,23 +65,23 @@
                         </div>
                     </th>
                     <th (click)="sortByMaxCases(sortedDataBasedOnDate) " class="sticky ">
-                        <div class="heading-content "><abbr class=" " title="Confirmed ">Confirmed</abbr>
+                        <div class="heading-content "><abbr class="confirmed " title="Confirmed ">Confirmed</abbr>
                             <div [ngClass]="{ 'down-arrow':showarrowdesc , 'up-arrow' : showarrowasc, 'hide':hide} "></div>
                         </div>
                     </th>
                     <th (click)="sortByMaxActive(sortedDataBasedOnDate) " class="sticky ">
-                        <div class="heading-content "><abbr class=" " title="Active ">Active</abbr>
+                        <div class="heading-content "><abbr class="active-cases " title="Active ">Active</abbr>
                             <div [ngClass]="showarrow ? 'down-arrow' : 'up-arrow' "></div>
                         </div>
                     </th>
                     <th (click)="sortByMaxRecovered(sortedDataBasedOnDate) " class="sticky ">
-                        <div class="heading-content "><abbr class=" " title="Recovered ">Recovered</abbr>
+                        <div class="heading-content "><abbr class=" recovered" title="Recovered ">Recovered</abbr>
                             <div></div>
                             <div [ngClass]="showarrow ? 'down-arrow' : 'up-arrow' "></div>
                         </div>
                     </th>
                     <th (click)="sortByMaxDeath(sortedDataBasedOnDate) " class="sticky ">
-                        <div class="heading-content "><abbr class=" " title="Deaths ">Deceased</abbr>
+                        <div class="heading-content "><abbr class="death" title="Deaths ">Deceased</abbr>
                             <div [ngClass]="showarrow ? 'down-arrow' : 'up-arrow' "></div>
                         </div>
                     </th>
@@ -113,9 +113,11 @@
 
                 </tr>
 
-                <tr app-district *ngIf="data[ 'show'] "></tr>
+
+                <tr class="nohover" app-district *ngIf="data[ 'show'] "></tr>
 
             </tbody>
+
         </table>
     </div>
 

@@ -346,3 +346,31 @@ table tbody td .deltas svg {
     stroke-width: 3;
     vertical-align: -.25px;
 }
+
+table {
+    table-layout: fixed;
+}
+
+table td {
+    overflow: hidden;
+}
+
+table tbody tr.nohover:hover {
+    background-color: white !important;
+}
+
+th .active-cases {
+    color: #007bff !important;
+}
+
+th abbr.confirmed {
+    color: #ff073a !important;
+}
+
+th abbr.recovered {
+    color: #28a745 !important;
+}
+
+th abbr.death {
+    color: #6c757d !important;
+}

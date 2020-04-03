@@ -25,7 +25,7 @@ table tbody .state-last-update td .last-update {
     align-items: baseline;
     width: 100%;
     margin-bottom: auto;
-    margin-top: .25rem;
+    margin-top: 25px;
 }
 
 .last-update h3,
@@ -34,9 +34,10 @@ table tbody .state-last-update td .last-update {
 }
 
 .last-update h6 {
-    color: rgba(40, 167, 69, .6);
+    color: rgba(37, 202, 16, 0.9);
     font-weight: 900;
-    text-align: left;
+    text-align: right;
+    font-size: 13px !important;
 }
 
 h6 {
@@ -50,16 +51,16 @@ table tr:hover {
     background: rgba(108, 117, 125, .12549);
 }
 
-table .district-heading {
+.district-heading th {
     background: rgba(97, 103, 107, 0.063);
 }
 
-table tr {
+tr {
     transition: background .1s ease-in-out;
     cursor: pointer;
 }
 
-table th {
+th {
     padding: .5rem;
     cursor: pointer;
     border-radius: 5px;
@@ -71,12 +72,16 @@ table th {
     padding: 8px;
 }
 
-table th .heading-content abbr {
+th .heading-content abbr {
     text-align: right;
     font-weight: bolder;
-    font-size: 14px;
+    font-size: 13px;
     color: black;
     padding: 10px;
+}
+
+th abbr.confirmed {
+    color: #ff073a !important;
 }
 
 abbr {
@@ -91,12 +96,7 @@ table tr:hover {
     background: rgba(61, 62, 63, 0.125) !important;
 }
 
-table tr {
-    transition: background .1s ease-in-out;
-    cursor: pointer;
-}
-
-table td {
+td {
     padding: .25rem;
     font-size: 13px;
     vertical-align: middle;
@@ -108,10 +108,64 @@ table td {
     font-weight: 900;
 }
 
-table .district td:first-child {
+td.col-md-6.district-name {
+    width: 150px !important;
+}
+
+.district td:first-child {
     text-align: left;
 }
 
-.district-table tr:nth-child(odd) {
+.district tr:nth-child(odd) {
     background-color: white !important;
+}
+
+.district {
+    width: 300px;
+    display: table;
+    margin-left: 25px;
+}
+
+.district:last-child {
+    margin-bottom: 25px;
+}
+
+.state-last-update {
+    margin-top: 25px;
+    text-align: right;
+}
+
+.district-heading,
+.state-last-update {
+    width: 300px;
+    display: table;
+    margin-left: 25px;
+}
+
+td.col-md-6.district-cases {
+    text-align: right;
+}
+
+.district:nth-child(odd) td {
+    background: rgb(248, 249, 250);
+}
+
+.district:hover {
+    background-color: rgb(202, 216, 218);
+}
+
+th {
+    text-align: center;
+}
+
+svg {
+    width: 9px;
+    height: 9px;
+    stroke-width: 3;
+    vertical-align: -.25px;
+}
+
+span.deltas {
+    margin-right: 20px;
+    color: red !important
 }

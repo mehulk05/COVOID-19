@@ -8,6 +8,7 @@ import { CoronaService } from '../shared/corona.service';
 })
 export class DistrictComponent implements OnInit {
 districtdata
+  isAscendingSort: boolean=false;
 
   constructor(private cs:CoronaService,) { }
 
@@ -18,13 +19,24 @@ districtdata
     })
     
   }
+
+  sortDistrict(districtdata){
+   const x= districtdata.forEach(item => item.keys.sort(function (a, b) {
+      if (b < a) {
+        return -1;
+      }
+      /* if (b.confirmed > a.confirmed) {
+        return 1;
+      } */
+      return 0;
+    }))
+
+    console.log(x)
+  }
+
+ 
   
-
-  /* getDistrictWise() {
-   this.cs.getDataDistrictWise()
-   .subscribe(data=>{
-     console.log(data)
-   })
-  } */
-
+ 
 }
+
+
