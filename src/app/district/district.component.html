@@ -23,18 +23,20 @@
     <th (click)="sortDistrict(districtdata)">
         <div class="heading-content">
             <abbr class="dist" title="District">District</abbr>
+            <div class="" [class.up-arrow]=" showArrows.uparrow " [class.downarrow]=" showArrows.downarrow "></div>
         </div>
     </th>
-    <th>
+    <th (click)="sortDistrictCases(districtdata)">
         <div class="heading-content">
             <abbr class="confirmed" title="Confirmed">Confirmed</abbr>
+            <div class="" [ngClass]=" { 'downarrow':showArrows.downarrowcases , 'up-arrow' : showArrows.uparrowowcases} "></div>
         </div>
     </th>
 </div>
 
 <div *ngFor="let data of districtdata|keyvalue" class="district">
 
-    <td class="col-md-6 district-name" style="font-weight: 600;"> {{data.key}}</td>
+    <td class="col-md-6 district-name" style="font-weight: 600;"> {{data.value.stateName}}</td>
     <td class="col-md-6 district-cases">
         <span *ngIf='data.value.delta.confirmed !==0 || data.value.delta.confirmed > 0 ;' class="deltas" style="color: rgb(255, 7, 58);">
             
@@ -49,6 +51,18 @@
 
 </div>
 
+
+<!-- <div *ngIf="districtdata1">
+    <div *ngFor="let data of districtdata1|keyvalue;let i=index" class="district">
+        <td>
+            {{data.value.stateName}}
+        </td>
+
+        <td>
+            {{data.value.confirmed}}
+        </td>
+    </div>
+</div> -->
 
 
 

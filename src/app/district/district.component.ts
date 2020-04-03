@@ -7,36 +7,87 @@ import { CoronaService } from '../shared/corona.service';
   styleUrls: ['./district.component.css']
 })
 export class DistrictComponent implements OnInit {
-districtdata
-  isAscendingSort: boolean=false;
 
-  constructor(private cs:CoronaService,) { }
+   showArrows = {
+    uparrow: false,
+    downarrow: false,
+    downarrowcases:false,
+    uparrowowcases:false
+}
+  districtdata
+  isAscendingSort: boolean = false;
+  districtdata1
+  //districtdata1: any[];
+
+  constructor(private cs: CoronaService, ) { }
 
   ngOnInit(): void {
-    this.cs.districtdata.subscribe(data=>{
-      this.districtdata=data
+    this.cs.districtdata.subscribe(data => {
+
+      let districtDataArray = [];
+      Object.keys(data).forEach((key, index) => {
+        districtDataArray.push(
+          Object.assign({}, { stateName: key }, data[key])
+        );
+      });
+      this.districtdata = districtDataArray
       console.log(data)
     })
-    
+
   }
 
-  sortDistrict(districtdata){
-   const x= districtdata.forEach(item => item.keys.sort(function (a, b) {
-      if (b < a) {
-        return -1;
-      }
-      /* if (b.confirmed > a.confirmed) {
-        return 1;
-      } */
-      return 0;
-    }))
+  sortDistrict(districtdata) {
+    this.resetArrow()
+    this.isAscendingSort = !this.isAscendingSort;
+    this.showArrows.uparrow=!this.showArrows.uparrow
+    const compare = (a, b) => {
+      return a.stateName.localeCompare(b.stateName);
+    };
+    this.districtdata = districtdata.sort(compare)
 
-    console.log(x)
+    if (!this.isAscendingSort) {
+      this.resetArrow()
+      this.showArrows.downarrow=!this.showArrows.downarrow
+      const compare = (a, b) => {
+        return b.stateName.localeCompare(a.stateName);
+      };
+      this.districtdata = districtdata.sort(compare)
+    }
+
+  }
+  resetArrow() {
+    this.showArrows = {
+      uparrow: false,
+      downarrow: false,
+      downarrowcases:false,
+      uparrowowcases:false
+  }
   }
 
- 
-  
- 
+  sortDistrictCases(districtdata){
+    this.resetArrow()
+    this.isAscendingSort = !this.isAscendingSort;
+    this.showArrows.uparrowowcases=!this.showArrows.uparrowowcases
+
+    const compare = (a, b) => {
+      return b.confirmed-a.confirmed;
+    };
+    this.districtdata = districtdata.sort(compare)
+    if (!this.isAscendingSort) {
+      this.resetArrow()
+      this.showArrows.downarrowcases=!this.showArrows.downarrowcases
+      const compare = (a, b) => {
+        return a.confirmed-b.confirmed;
+      };
+      this.districtdata = districtdata.sort(compare)
+    }
+
+  }
 }
+
+
+
+
+
 
 
