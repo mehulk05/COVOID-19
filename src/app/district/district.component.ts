@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CoronaService } from '../shared/corona.service';
 
 @Component({
-  selector: 'app-district',
+  selector: '[app-district]',
   templateUrl: './district.component.html',
   styleUrls: ['./district.component.css']
 })

@@ -1,7 +1,38 @@
-<div *ngFor="let data of districtdata|keyvalue">
-    <p> {{data.key}}</p>{{data.value.confirmed}}
-</div>
+<tr class="state-last-update">
+    <td colspan="2">
+        <div class="last-update">
+            <h6>Last Updated&nbsp; about 1 hours Ago</h6>
+        </div>
+    </td>
+</tr>
 
-<div>
-    Data from ditrcit
-</div>
+<tr class="district-heading">
+    <th>
+        <div class="heading-content">
+            <abbr title="District">District</abbr>
+        </div>
+    </th>
+    <th>
+        <div class="heading-content">
+            <abbr title="Confirmed">Confirmed</abbr>
+        </div>
+    </th>
+</tr>
+
+
+<tr *ngFor="let data of districtdata|keyvalue" class="district" style="background: rgb(248, 249, 250);">
+
+    <td style="font-weight: 600;"> {{data.key}}</td>
+    <td><span class="deltas" style="color: rgb(255, 7, 58);"></span>{{data.value.confirmed}}</td>
+
+</tr>
+
+
+
+
+
+<!-- <div class="col-md-12  state-last-update">
+    <div class="last-update">
+        <h6>Last Updated&nbsp; about 1 hours Ago</h6>
+    </div>
+</div> -->

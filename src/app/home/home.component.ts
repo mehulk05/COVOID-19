@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CoronaService } from '../shared/corona.service';
-import { stringify } from 'querystring';
+import { ThrowStmt } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-home',
@@ -8,8 +9,10 @@ import { stringify } from 'querystring';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  showarrow=true
- 
+  showarrowasc=false
+ showarrowdesc=false
+hide=true
+ showarrow
   showDistrict:boolean=false
   sortedDataBasedOnDate
   private isAscendingSort: boolean = false;
@@ -21,6 +24,7 @@ export class HomeComponent implements OnInit {
   startdate = new Date()
   lastupdateddate = new Date();
   lastupdated: any = { hour: 0, minute: 0, second: 0 }
+  SingleStateData
 
   constructor(private cs: CoronaService) { }
 
@@ -39,7 +43,8 @@ export class HomeComponent implements OnInit {
        // console.log(this.sortedDataBasedOnDate);
         this.calculateDiff(this.sortedDataBasedOnDate)
         this.statewisedata = this.sortedDataBasedOnDate[this.sortedDataBasedOnDate.length - 1].statewise
-
+        this.statewisecase= this.sortedDataBasedOnDate[this.sortedDataBasedOnDate.length - 1].total
+     //   console.log(this.statewisecase)
       },
       error => {
         console.log(error);
@@ -108,9 +113,17 @@ export class HomeComponent implements OnInit {
 
   OngetState(state) {
 
+  this.getDataofState(state)
+
     this.cs.getState(state)
     this.cs.getDataDistrictWise(state)
  
+  }
+  getDataofState(state: any) {
+   // console.log(this.statewisedata)
+   const f = this.statewisedata.filter(a => a.state==state);
+    this.SingleStateData=f[0]
+    console.log();
   }
 
   showHideData(data) {
@@ -123,7 +136,9 @@ export class HomeComponent implements OnInit {
 
   sortAscending(data) {
     this.isAscendingSort = !this.isAscendingSort;
-    this.showarrow=true
+    this.showarrowasc=!this.showarrowasc
+    this.showarrowdesc=false
+    
     data.forEach(item => item.statewise.sort(function (a, b) {
       if (b.state < a.state) {
         return -1;
@@ -136,7 +151,9 @@ export class HomeComponent implements OnInit {
     this.calculateDiff(this.sortedDataBasedOnDate)
 
     if (!this.isAscendingSort) {
-this.showarrow=!this.showarrow
+    
+    this.showarrowdesc=!this.showarrowdesc;
+    this.showarrowasc=false
       let a = data.forEach(item => item.statewise.sort(function (a, b) {
         if (a.state < b.state) {
           return -1;
@@ -152,7 +169,10 @@ this.showarrow=!this.showarrow
 
   sortByMaxCases(sortedDataBasedOnDate) {
     this.isAscendingSort = !this.isAscendingSort;
-    console.log(this.isAscendingSort)
+
+    this.showarrowasc=!this.showarrowasc
+    this.showarrowdesc=false
+ 
     sortedDataBasedOnDate.forEach(item => item.statewise.sort(function (a, b) {
       if (b.confirmed < a.confirmed) {
         return -1;
@@ -165,6 +185,10 @@ this.showarrow=!this.showarrow
     this.calculateDiff(this.sortedDataBasedOnDate)
 
     if (!this.isAscendingSort) {
+
+      this.showarrowdesc=!this.showarrowdesc;
+      this.showarrowasc=false
+
     sortedDataBasedOnDate.forEach(item => item.statewise.sort(function (a, b) {
         if (a.confirmed < b.confirmed) {
           return -1;
