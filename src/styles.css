@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "~bootstrap/dist/css/bootstrap.css";
 @font-face {
     font-family: "archia";
     src: url(assets/fonts/archia-bold-webfont.ad8463d1.woff2) format("woff2");

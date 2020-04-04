@@ -1,2 +1,82 @@
-<app-home></app-home>
+<div class="heading">
+
+
+    <div class="container">
+        <div class="Navbar" style="animation-delay: 0.5s; transition: all 0.3s ease-in-out 0s;"><img class="fadeInUp img-circle logo" alt="COVID-19 Tracker" src="../assets/heading4.png" style="animation-delay: 0s; transition: all 0.3s ease-in-out 0s;">
+            <div class="navbar-left">
+                <a routerLink="/home" routerLinkActive="active">
+                    <span class="fadeInUp" style="animation-delay: 0.2s;">Home</span>
+                </a>
+                <a routerLink="/helpful" routerLinkActive="active">
+                    <span class="fadeInUp " style="animation-delay: 0.5s;">Helpful Links</span>
+                </a>
+                <a routerLink="/faq" routerLinkActive="active">
+                    <span class="fadeInUp " style="animation-delay: 0.6s;">FAQ</span>
+                </a>
+
+
+            </div>
+            <div class="navbar-right">
+                <ul _ngcontent-dha-c12="" class="navbar-nav ">
+                    <li _ngcontent-dha-c12="" class="nav-item inline-block"><a href="https://github.com/mehulk05" class="nav-link text-github"><i class="fa fa-github"
+                                style="font-size: 24px; color: black;"></i></a></li>
+                    <li class="nav-item inline-block"><a href="https://medium.com/@mehulkothari05" class="nav-link"><i
+                                class="fa fa-medium" style="font-size: 24px; color: black;"></i></a></li>
+                    <li class="nav-item inline-block"><a href="https://www.instagram.com/mehul_kothari05/" class="nav-link"><i class="fa fa-instagram" style="font-size: 24px; color: black;"></i></a>
+                    </li>
+                    <li class="nav-item inline-block"><a href="https://www.linkedin.com/in/mehul-kothari-765868126/" class="nav-link"><i class="fa fa-linkedin" style="font-size: 24px; color: black;"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="Banner fadeInUp" style="animation-delay: 0.2s;">
+        <div class="snippet" *ngIf="BannerData else noBanner">{{BannerData}} &nbsp;</div>
+        <ng-template #noBanner>
+            <div class="snippet">#BreakTheChain of unverified WhatsApp forwards which spread wrong information! Do not forward unless you verify it.</div>
+        </ng-template>
+
+    </div>
+</div>
 <router-outlet></router-outlet>
+<div class="container">
+
+
+    <footer class="fadeInUp col-md-12" style="animation-delay: 2s;">
+        <h5>STAY SAFE STAY HOME FIGHT WITH UNITY</h5>
+        <div class="link"><a href="https://github.com/mehulk05/COVOID-19">covid19india</a></div><a href="https://github.com/mehulk05/COVOID-19" class="button github"><svg xmlns="http://www.w3.org/2000/svg"
+                width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                </path>
+            </svg><span>Open Sourced on GitHub</span></a>
+
+
+
+        <a href="https://medium.com/@mehulkothari05/covoid-19-tracker-statistics-app-using-angular-2358347b3d1f" class="button btn-light medium">
+            <span><img class="img-circle" width="20"
+                    src="https://seeklogo.com/images/M/medium-logo-93CDCF6451-seeklogo.com.png">Read about this Project
+                On MEDIUM</span></a>
+
+
+        <div class="footer-icons">
+            <ul _ngcontent-dha-c12="" class="navbar-nav ">
+                <li _ngcontent-dha-c12="" class="nav-item inline-block"><a href="https://github.com/mehulk05" class="nav-link text-github"><i class="fa fa-github"
+                                    style="font-size: 24px; color: black;"></i></a></li>
+                <li class="nav-item inline-block"><a href="https://medium.com/@mehulkothari05" class="nav-link"><i
+                                    class="fa fa-medium" style="font-size: 24px; color: black;"></i></a></li>
+                <li class="nav-item inline-block"><a href="https://www.instagram.com/mehul_kothari05/" class="nav-link"><i class="fa fa-instagram" style="font-size: 24px; color: black;"></i></a>
+                </li>
+                <li class="nav-item inline-block"><a href="https://www.linkedin.com/in/mehul-kothari-765868126/" class="nav-link"><i class="fa fa-linkedin" style="font-size: 24px; color: black;"></i></a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="video" style="margin :10px auto;    margin-top: 50px;">
+            <iframe src="https://drive.google.com/file/d/1NZDT7nD5041yxFhexuiivp4aPpn15xxC/preview" style="width: auto;height: auto;"></iframe>
+        </div>
+
+    </footer>
+</div>

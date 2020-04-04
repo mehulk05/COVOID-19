@@ -1,0 +1,74 @@
+.FAQ {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 30rem;
+}
+
+.FAQ>:first-child {
+    margin-top: 2rem;
+}
+
+.fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+    -webkit-animation-duration: .45s;
+    animation-duration: .45s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.FAQ>* {
+    align-self: center;
+    width: 60rem;
+    margin-bottom: 1.5rem;
+}
+
+.FAQ .question {
+    color: #343a40;
+    margin: 0 0 .25rem;
+}
+
+.FAQ h2 {
+    margin: 0;
+    font-weight: 600;
+    text-transform: none;
+}
+
+h2,
+h3 {
+    font-family: "archia";
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 18px!important;
+}
+
+.FAQ .answer {
+    color: #007bff;
+    line-height: 1.4;
+    margin-top: 10px;
+}
+
+.FAQ h2 {
+    margin: 0;
+    font-weight: 600;
+    text-transform: none;
+}
+
+.FAQ a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+@media (max-width:768px) {
+    .FAQ .faq,
+    .link {
+        width: calc(100% - 2rem);
+    }
+    .FAQ h2 {
+        font-size: 14px !important;
+    }
+}

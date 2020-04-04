@@ -9,10 +9,21 @@ import { ThrowStmt } from '@angular/compiler';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  showarrowasc=false
- showarrowdesc=false
-hide=true
- showarrow
+
+  showArrows = {
+    uparrowState: false,
+    downarrowState: false,
+    downarrowConfirmed:false,
+    uparrowowConfirmed:false,
+    downarrowActive:false,
+    uparrowActive:false,
+    downarrowRecovered:false,
+    uparrowRecovered:false,
+    downarrowDeath:false,
+    uparrowDeath:false,
+}
+
+
   showDistrict:boolean=false
   sortedDataBasedOnDate
   private isAscendingSort: boolean = false;
@@ -25,6 +36,7 @@ hide=true
   lastupdateddate = new Date();
   lastupdated: any = { hour: 0, minute: 0, second: 0 }
   SingleStateData
+  lastrefreshedtime: any;
 
   constructor(private cs: CoronaService) { }
 
@@ -91,8 +103,9 @@ hide=true
 
   getStateWise() {
     this.cs.getDataStateWise().subscribe(data => {
-      //console.log(data)    
+    this.lastrefreshedtime=data.data.lastRefreshed   
       this.lastupdateddate = data.data.lastRefreshed
+     // console.log(this.lastupdated)
 
       function getDataDiff(startDate, endDate) {
         var diff = endDate.getTime() - startDate.getTime();
@@ -135,11 +148,28 @@ hide=true
   }
 
   sortAscending(data) {
+    this.resetArrows()
     this.isAscendingSort = !this.isAscendingSort;
-    this.showarrowasc=!this.showarrowasc
-    this.showarrowdesc=false
+   this.showArrows.uparrowState=!this.showArrows.uparrowState
     
     data.forEach(item => item.statewise.sort(function (a, b) {
+      if (a.state < b.state) {
+        return -1;
+      }
+      if (a.state > b.state) {
+        return 1;
+      }
+      return 0;
+    }))
+
+
+    this.calculateDiff(this.sortedDataBasedOnDate)
+
+    if (!this.isAscendingSort) {
+      this.resetArrows()
+      this.showArrows.downarrowState=!this.showArrows.downarrowState
+      let a = data.forEach(item => item.statewise.sort(function (a, b) {
+      
       if (b.state < a.state) {
         return -1;
       }
@@ -148,30 +178,31 @@ hide=true
       }
       return 0;
     }))
-    this.calculateDiff(this.sortedDataBasedOnDate)
-
-    if (!this.isAscendingSort) {
-    
-    this.showarrowdesc=!this.showarrowdesc;
-    this.showarrowasc=false
-      let a = data.forEach(item => item.statewise.sort(function (a, b) {
-        if (a.state < b.state) {
-          return -1;
-        }
-        if (a.state > b.state) {
-          return 1;
-        }
-        return 0;
-      }))
       this.calculateDiff(this.sortedDataBasedOnDate)
     }
   }
+  resetArrows() {
+    this.showArrows = {
+      uparrowState: false,
+      downarrowState: false,
+      downarrowConfirmed:false,
+      uparrowowConfirmed:false,
+      downarrowActive:false,
+      uparrowActive:false,
+      downarrowRecovered:false,
+      uparrowRecovered:false,
+      downarrowDeath:false,
+      uparrowDeath:false,
+  }
+    
+  }
 
   sortByMaxCases(sortedDataBasedOnDate) {
+    this.resetArrows()
     this.isAscendingSort = !this.isAscendingSort;
+   this.showArrows.downarrowConfirmed=!this.showArrows.downarrowConfirmed
 
-    this.showarrowasc=!this.showarrowasc
-    this.showarrowdesc=false
+
  
     sortedDataBasedOnDate.forEach(item => item.statewise.sort(function (a, b) {
       if (b.confirmed < a.confirmed) {
@@ -185,10 +216,8 @@ hide=true
     this.calculateDiff(this.sortedDataBasedOnDate)
 
     if (!this.isAscendingSort) {
-
-      this.showarrowdesc=!this.showarrowdesc;
-      this.showarrowasc=false
-
+      this.resetArrows()
+     this.showArrows.uparrowowConfirmed=!this.showArrows.uparrowowConfirmed
     sortedDataBasedOnDate.forEach(item => item.statewise.sort(function (a, b) {
         if (a.confirmed < b.confirmed) {
           return -1;
@@ -204,8 +233,10 @@ hide=true
   }
 
   sortByMaxActive(sortedDataBasedOnDate) {
+    this.resetArrows()
     this.isAscendingSort = !this.isAscendingSort;
-    console.log(this.isAscendingSort)
+   this.showArrows.uparrowActive=!this.showArrows.uparrowActive
+   
     sortedDataBasedOnDate.forEach(item => item.statewise.sort(function (a, b) {
       if (a.active < b.active) {
         return -1;
@@ -218,7 +249,9 @@ hide=true
     this.calculateDiff(this.sortedDataBasedOnDate)
 
     if (!this.isAscendingSort) {
-      console.log(this.isAscendingSort)
+      this.resetArrows()
+     this.showArrows.downarrowActive=!this.showArrows.downarrowActive
+
       sortedDataBasedOnDate.forEach(item => item.statewise.sort(function (a, b) {
         if (b.active < a.active) {
           return -1;
@@ -235,8 +268,9 @@ hide=true
 
   sortByMaxRecovered(sortedDataBasedOnDate) {
 
+    this.resetArrows()
     this.isAscendingSort = !this.isAscendingSort;
-    console.log(this.isAscendingSort)
+   this.showArrows.uparrowRecovered=!this.showArrows.uparrowRecovered
     sortedDataBasedOnDate.forEach(item => item.statewise.sort(function (a, b) {
       if (b.recovered < a.recovered) {
         return -1;
@@ -250,7 +284,8 @@ hide=true
 
     if (!this.isAscendingSort) {
 
-      console.log(this.isAscendingSort)
+      this.resetArrows()
+     this.showArrows.downarrowRecovered=!this.showArrows.downarrowRecovered
       sortedDataBasedOnDate.forEach(item => item.statewise.sort(function (a, b) {
         if (a.recovered < b.recovered) {
           return -1;
@@ -267,29 +302,36 @@ hide=true
   }
 
   sortByMaxDeath(sortedDataBasedOnDate) {
+    
+    this.resetArrows()
     this.isAscendingSort = !this.isAscendingSort;
+   this.showArrows.uparrowDeath=!this.showArrows.uparrowDeath
     sortedDataBasedOnDate.forEach(item => item.statewise.sort(function (a, b) {
-      if (b.deaths < a.deaths) {
-        return -1;
-      }
-      if (b.deaths > a.deaths) {
-        return 1;
-      }
-      return 0;
-    }))
+     
+    if (a.deaths < b.deaths) {
+      return -1;
+    }
+    if (a.deaths > b.deaths) {
+      return 1;
+    }
+    return 0;
+  }))
     this.calculateDiff(this.sortedDataBasedOnDate)
 
     if (!this.isAscendingSort) {
-      console.log(this.isAscendingSort)
+      this.resetArrows()
+         this.showArrows.downarrowDeath=!this.showArrows.downarrowDeath
       sortedDataBasedOnDate.forEach(item => item.statewise.sort(function (a, b) {
-        if (a.deaths < b.deaths) {
+        if (b.deaths < a.deaths) {
           return -1;
         }
-        if (a.deaths > b.deaths) {
+        if (b.deaths > a.deaths) {
           return 1;
         }
         return 0;
       }))
+  
+  
 
       this.calculateDiff(this.sortedDataBasedOnDate)
     }
