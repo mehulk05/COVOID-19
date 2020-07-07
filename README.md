@@ -1,17 +1,18 @@
-#About
+# About
+
 LIVE URL:https://mehulk05.github.io/COVOID-19/
 
 
 The application shows real-time data for the number of cases of Corona Virus in various States and districts of India. It also shows the increase in no of cases all over the country , increase in a number of cases state wise and district wise. It also show the confirmed cases, active cases, recovered, and total no of deaths. Also, the app has one page named Help Lines which has various helpline numbers and Links. The app has the banner part where some guidelines are displayed continuously and changes every 5 seconds to make people aware, what are safety measures etc.
 
-#Technology Used
+# Technology Used
 Angular9
 Typescript
 Javascript sorting Functions
 Bootstrap
 
 
-#Key Features of App :
+# Key Features of App :
 RealTime data of no of cases of Corona Virus
 Shows Confirmed Active, Recovered, no of Deaths
 Show Data of All affected States
